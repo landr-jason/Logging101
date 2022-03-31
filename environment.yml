@@ -1,0 +1,11 @@
+name: logging-101
+channels:
+  - conda-forge
+  - defaults
+  - anaconda
+dependencies:
+  - python==3.8.5
+  - pip
+  - pip:
+      - nbstripout
+      - notebook
