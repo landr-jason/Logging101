@@ -9,3 +9,4 @@ dependencies:
   - pip:
       - nbstripout
       - notebook
+      - RISE
