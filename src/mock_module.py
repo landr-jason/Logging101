@@ -20,7 +20,7 @@ LOG_CONFIG = {
         __name__: {
             'handlers': ['file_handler'],
             'level': 'ERROR',
-            'propagate': True
+            'propagate': False
         }
     }
 }
