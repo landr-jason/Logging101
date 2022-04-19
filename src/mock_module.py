@@ -1,6 +1,7 @@
 import logging.config
 
 output_filename = 'module.error.log'
+
 LOG_CONFIG = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -10,7 +11,7 @@ LOG_CONFIG = {
         },
     },
     'handlers': {
-        'file_handler': {
+        'module_file_handler': {
             'class': 'logging.FileHandler',
             'formatter': 'default_formatter',
             'filename': output_filename
@@ -18,7 +19,7 @@ LOG_CONFIG = {
     },
     'loggers': {
         __name__: {
-            'handlers': ['file_handler'],
+            'handlers': ['module_file_handler'],
             'level': 'ERROR',
             'propagate': False
         }
@@ -28,11 +29,14 @@ LOG_CONFIG = {
 logging.config.dictConfig(LOG_CONFIG)
 logger = logging.getLogger(__name__)
 
-def mock_function():
-    logger.debug("module debug test")
-    logger.info("module info test")
-    logger.warning("module warning test")
-    logger.error("module error test")
-    logger.critical("module critical test")
+def mock_function(prefix = None):
+    if prefix is None:
+        prefix = ''
+
+    logger.debug(f"{prefix} MODULE DEBUG message")
+    logger.info(f"{prefix} MODULE INFO message")
+    logger.warning(f"{prefix} MODULE WARNING message")
+    logger.error(f"{prefix} MODULE ERROR message")
+    logger.critical(f"{prefix} MODULE CRITICAL message")
 
     return __name__, output_filename
